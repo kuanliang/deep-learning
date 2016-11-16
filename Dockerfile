@@ -40,7 +40,7 @@ RUN apt-get update && apt-get upgrade -y && \
         python-numpy \
         python-opencv \
         gfortran && \
-    apt-get clean
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # install tensorflow with GPU-lib, caffe, chainer and setuptools
 WORKDIR /root
