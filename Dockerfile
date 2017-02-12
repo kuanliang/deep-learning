@@ -39,6 +39,7 @@ RUN apt-get update && apt-get upgrade -y && \
         python-pip \
         python-numpy \
         python-opencv \
+        python-wand \
         gfortran && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
@@ -48,7 +49,7 @@ RUN git clone --depth 1000 https://github.com/tensorflow/tensorflow.git && \
     git clone --depth 1000 https://github.com/BVLC/caffe.git && \
     git clone --depth 1000 https://github.com/pfnet/chainer.git && \
     pip install --upgrade pip && \
-    pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.11.0-cp27-none-linux_x86_64.whl && \
+    pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.1-cp27-none-linux_x86_64.whl && \
     pip install --upgrade setuptools
 
 # setup caffe
@@ -73,3 +74,4 @@ WORKDIR /root
 ADD init.sh /usr/local/bin/init.sh
 RUN chmod u+x /usr/local/bin/init.sh
 ENTRYPOINT ["/usr/local/bin/init.sh"]
+
